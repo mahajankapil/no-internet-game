@@ -43,4 +43,4 @@
 --- | --- | --- | --- | --- |
 Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ |
 ---
-> ### If you enjoysed this game, don't forget to give a star🌟 and fork to make your own Spider-Man game
+> ### If you enjoysed this game, don't forget to give a star🌟 and fork to make your own Love Crush game
