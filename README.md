@@ -6,7 +6,7 @@
 
 ---
 ## Special Notes
-### What is needed to Play `Spider-Man`
+### What is needed to Play `Love-game`
 - A Laptop, Computer or a Desktop with a keyboard
 - Specially a Keyboard
 - A web browser
@@ -43,4 +43,4 @@
 --- | --- | --- | --- | --- |
 Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ |
 ---
-> ### If you enjoysed this game, don't forget to give a star🌟 and fork to make your own Love Crush game
+> ### If you enjoyed this game, don't forget to give a star🌟 and fork to make your own Love Crush game
