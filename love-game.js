@@ -79,7 +79,7 @@ var DIRECTION = {
 	LEFT: -1,
 }
 
-function SpidermanGame(opts) {
+function LoveGame(opts) {
 	var options = {
 		canvas: "canvas",
 		score: 0,
@@ -112,14 +112,14 @@ function SpidermanGame(opts) {
 	}; // object that contains information about the next scene
 }
 
-SpidermanGame.prototype.paused             = false;
-SpidermanGame.prototype.initialized        = false;
-SpidermanGame.prototype.soundEffects       = true;
-SpidermanGame.prototype.escapeKey          = false;
-SpidermanGame.prototype.muted              = false;
-SpidermanGame.prototype.slowmotion         = false;
+LoveGame.prototype.paused             = false;
+LoveGame.prototype.initialized        = false;
+LoveGame.prototype.soundEffects       = true;
+LoveGame.prototype.escapeKey          = false;
+LoveGame.prototype.muted              = false;
+LoveGame.prototype.slowmotion         = false;
 
-SpidermanGame.prototype.load = function() {
+LoveGame.prototype.load = function() {
 	if (this.initialized) return false;
 
 	var self = this;
@@ -294,7 +294,7 @@ SpidermanGame.prototype.load = function() {
 	});
 }
 
-SpidermanGame.prototype.setSlowmotion = function(slowmo) {
+LoveGame.prototype.setSlowmotion = function(slowmo) {
 	if (slowmo) {
 		this.slowmotion = true;
 
@@ -316,7 +316,7 @@ SpidermanGame.prototype.setSlowmotion = function(slowmo) {
 	}
 }
 
-SpidermanGame.prototype.mute = function() {
+LoveGame.prototype.mute = function() {
 	this.muted = true;
 
 	for (var audio in AUDIO_RESOURCES) {
@@ -324,7 +324,7 @@ SpidermanGame.prototype.mute = function() {
 	}
 }
 
-SpidermanGame.prototype.unmute = function() {
+LoveGame.prototype.unmute = function() {
 	this.muted = false;
 
 	for (var audio in AUDIO_RESOURCES) {
@@ -332,7 +332,7 @@ SpidermanGame.prototype.unmute = function() {
 	}
 }
 
-SpidermanGame.prototype.showPauseMenu = function() {
+LoveGame.prototype.showPauseMenu = function() {
 	if (this.gameoverMenu.style.display == "block") return;
 	var pauseMenu = this.pauseMenu;
 
@@ -345,7 +345,7 @@ SpidermanGame.prototype.showPauseMenu = function() {
 	this.pauseMenu.style.top = (top + this.canvas.height / 2) + "px";
 }
 
-SpidermanGame.prototype.showGameoverMenu = function() {
+LoveGame.prototype.showGameoverMenu = function() {
 	var gameoverMenu = this.gameoverMenu;
 	this.gameoverMenu.querySelector(".spiderman-game-score").innerHTML = this.score;
 
@@ -358,12 +358,12 @@ SpidermanGame.prototype.showGameoverMenu = function() {
 	this.gameoverMenu.style.top = (top + this.canvas.height / 2) + "px";
 }
 
-SpidermanGame.prototype.pause = function() {
+LoveGame.prototype.pause = function() {
 	this.paused = true;
 	this.showPauseMenu();
 };
 
-SpidermanGame.prototype.unpause = function() {
+LoveGame.prototype.unpause = function() {
 	this.paused = false;
 
 	this.pauseMenu.style.display = "none";
@@ -371,7 +371,7 @@ SpidermanGame.prototype.unpause = function() {
 	this.update();
 }
 
-SpidermanGame.prototype.playSound = function(audio, clone, currentTime) {
+LoveGame.prototype.playSound = function(audio, clone, currentTime) {
 	audio = audio && audio.play ? audio : AUDIO_RESOURCES[audio];
 
 	if (audio && audio.play) {
@@ -387,7 +387,7 @@ SpidermanGame.prototype.playSound = function(audio, clone, currentTime) {
 	}
 };
 
-SpidermanGame.prototype.pauseSound = function(audio) {
+LoveGame.prototype.pauseSound = function(audio) {
 	if (audio && audio.pause) {
 		return audio.pause();
 	}
@@ -397,7 +397,7 @@ SpidermanGame.prototype.pauseSound = function(audio) {
 	}
 }
 
-SpidermanGame.prototype.drawBackground = function() {
+LoveGame.prototype.drawBackground = function() {
 	var background = this.resources.BACKGROUND;
 	var backgroundWidth = background.width;
 	var backgroundHeight = background.height;
@@ -412,7 +412,7 @@ SpidermanGame.prototype.drawBackground = function() {
 	this.ctx.drawImage(background, x + this.canvas.height * ratio, y, this.canvas.height * ratio, this.canvas.height);
 }
 
-SpidermanGame.prototype.drawRoofs = function() {
+LoveGame.prototype.drawRoofs = function() {
 	var roofs = this.scene.roofs;
 
 	for (var i = 0; i < roofs.length; i++) {
@@ -430,7 +430,7 @@ SpidermanGame.prototype.drawRoofs = function() {
 	}
 }
 
-SpidermanGame.prototype.drawEnemies = function() {
+LoveGame.prototype.drawEnemies = function() {
 	var enemies = this.scene.enemies;
 
 	for (var i = 0; i < enemies.length; i++) {
@@ -438,7 +438,7 @@ SpidermanGame.prototype.drawEnemies = function() {
 	}
 }
 
-SpidermanGame.prototype.update = function() {
+LoveGame.prototype.update = function() {
 	if (this.paused) return;
 	if (this.gameIsOver) return;
 
@@ -460,7 +460,7 @@ SpidermanGame.prototype.update = function() {
 	spiderman.update();
 
 	this.ctx.fillStyle = "white";
-	this.ctx.font = "20px SpidermanGamePixelFont, Monospace, Helvetica";
+	this.ctx.font = "20px LoveGamePixelFont, Monospace, Helvetica";
 	this.ctx.textAlign = "center";
 	this.ctx.textBaseline = "top";
 	this.ctx.fillText(this.score, this.canvas.width / 2, 5);
@@ -480,39 +480,39 @@ SpidermanGame.prototype.update = function() {
 	requestAnimFrame(this.update.bind(this));
 }
 
-SpidermanGame.prototype.addProjectile = function(projectile) {
+LoveGame.prototype.addProjectile = function(projectile) {
 	if (projectile instanceof Projectile) {
 		this.scene.projectiles.push(projectile);
 	}
 }
 
-SpidermanGame.prototype.removeProjectile = function(projectile) {
+LoveGame.prototype.removeProjectile = function(projectile) {
 	var projectiles = this.scene.projectiles;
 	if (projectiles.indexOf(projectile) > -1) {
 		projectiles.splice(projectiles.indexOf(projectile), 1);
 	}
 }
 
-SpidermanGame.prototype.addEnemy = function(enemy) {
+LoveGame.prototype.addEnemy = function(enemy) {
 	if (enemy instanceof Enemy) {
 		this.scene.enemies.push(enemy);
 	}
 }
 
-SpidermanGame.prototype.removeEnemy = function(enemy) {
+LoveGame.prototype.removeEnemy = function(enemy) {
 	var enemies = this.scene.enemies;
 	if (enemies.indexOf(enemy) > -1) {
 		enemies.splice(enemies.indexOf(enemy), 1);
 	}
 }
 
-SpidermanGame.prototype.addRoof = function(roof) {
+LoveGame.prototype.addRoof = function(roof) {
 	if (roof instanceof Roof) {
 		this.scene.roofs.push(roof);
 	}
 }
 
-SpidermanGame.prototype.removeRoof = function(roof) {
+LoveGame.prototype.removeRoof = function(roof) {
 	var roofs = this.scene.roofs;
 	if (roofs.indexOf(roof) > -1) {
 		roofs.splice(roofs.indexOf(roof), 1);
@@ -520,7 +520,7 @@ SpidermanGame.prototype.removeRoof = function(roof) {
 }
 
 // checks if given point is roof
-SpidermanGame.prototype.isRoofAtPoint = function(x, y) {
+LoveGame.prototype.isRoofAtPoint = function(x, y) {
 	x -= this.cameraX; // to move point relative to canvas
 	for (var i = 0; i < this.scene.roofs.length; i++) {
 		var roof = this.scene.roofs[i];
@@ -534,7 +534,7 @@ SpidermanGame.prototype.isRoofAtPoint = function(x, y) {
 	return false;
 }
 
-SpidermanGame.prototype.isCharacterAtPoint = function(x, y) {
+LoveGame.prototype.isCharacterAtPoint = function(x, y) {
 	// enemies + spiderman
 	var characters = this.scene.enemies.concat(this.spiderman);
 	x -= this.cameraX;
@@ -560,7 +560,7 @@ SpidermanGame.prototype.isCharacterAtPoint = function(x, y) {
 	return false;
 }
 
-SpidermanGame.prototype.restart = function() {
+LoveGame.prototype.restart = function() {
 	var roof = new Roof(this);
 	roof.x = 0;
 
@@ -581,7 +581,7 @@ SpidermanGame.prototype.restart = function() {
 	this.update();
 }
 
-SpidermanGame.prototype.gameover = function() {
+LoveGame.prototype.gameover = function() {
 	this.gameIsOver = true;
 
 	this.showGameoverMenu();
@@ -803,7 +803,7 @@ SpiderMan.prototype.drawWebbar = function() {
 	var img = this.game.resources.WEB_PROJECTILE;
 	var string = "X " + this.web;
 	this.ctx.fillStyle = "white";
-	this.ctx.font = "15px SpidermanGamePixelFont, Monospace, Arial";
+	this.ctx.font = "15px LoveGamePixelFont, Monospace, Arial";
 	this.ctx.textAlign = "start";
 	this.ctx.textBaseline = "top";
 
@@ -1099,7 +1099,7 @@ Enemy.prototype.handleHitWithProjectile = function(projectile) {
 	}
 }
 
-window.SpidermanGame = SpidermanGame;
+window.LoveGame = LoveGame;
 window.Projectile    = Projectile;
 window.SpiderMan     = SpiderMan;
 window.Enemy         = Enemy;
