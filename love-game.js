@@ -1,8 +1,6 @@
 (function(window, document) {
 
-// change this to relative path (relative to script) or to absolute path
-// where the audio, fonts and images folders are located
-// (include a slash at the end)
+
 var RESOURCES_FOLDER_PATH = "";
 
 var requestAnimationFrame = (function() {
@@ -109,7 +107,7 @@ function LoveGame(opts) {
 		projectiles: [],
 		roofs: [],
 		enemies: [],
-	}; // object that contains information about the next scene
+	}; // object next scene
 }
 
 LoveGame.prototype.paused             = false;
