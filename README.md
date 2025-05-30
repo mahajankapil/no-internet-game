@@ -1,6 +1,5 @@
 # Love Game For Crush
-- Love Game | A Love game to fight with more Crush in HTML5, CSS3 and Javascript.
-Live Link -  
+- Love Game | A Love game to fight with more Crush in HTML5, CSS3 and Javascript. 
 
 # Live Link - 
 https://no-internet-game-indol.vercel.app/
